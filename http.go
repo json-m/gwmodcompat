@@ -10,6 +10,7 @@ import (
 
 // handles starting up the local api server
 func startHttpServer() {
+	http.HandleFunc("/", siteIndex)
 	http.HandleFunc("/data", getData)
 	fs := http.FileServer(http.Dir("mods"))
 	http.Handle("/mods/", http.StripPrefix("/mods", fs))
@@ -34,4 +35,9 @@ func getData(w http.ResponseWriter, req *http.Request) {
 	// set proper header and return the data
 	w.Header().Set("Content-Type", "application/json")
 	_, _ = fmt.Fprintf(w, string(h))
+}
+
+// main page
+func siteIndex(w http.ResponseWriter, req *http.Request) {
+	_, _ = fmt.Fprint(w, "modcompat server running")
 }

@@ -28,9 +28,9 @@ func modKnowthyenemy() {
 
 	// is latest newer than latest in database?
 	if semver.Compare(fmt.Sprintf("v%s", latest), fmt.Sprintf("v%s", modData.KnowThyEnemy.Latest)) == 1 {
-		log.Println("KTE: new version available")
+		//log.Println("KTE: new version available")
 	} else {
-		log.Println("KTE: no new version available")
+		//log.Println("KTE: no new version available")
 		return
 	}
 
